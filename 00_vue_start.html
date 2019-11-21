@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="js-input">
+  <p id="js-p"></p>
+  <div id="app">
+    <input type="text" id="vue-input" v-model="msg_vue">
+    <p id="vue-p">{{msg_vue}}</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+  <script>
+    // id가 js-input인 input 태그에 글자가 써지면
+    const msg = document.querySelector('#js-input')
+    msg.addEventListener('keydown', ()=>{
+      const jsp = document.querySelector('#js-p')  
+      jsp.innerHTML = msg.value
+    })
+    // p 태그 안에도 글자 출력
+    const app = new Vue({
+      // id가 app인 것과 연결
+      el: '#app',
+      data: {
+        msg_vue: '',
+      }
+    })
+  </script>
+</body>
+</html>
